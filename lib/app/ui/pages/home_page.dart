@@ -36,43 +36,41 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColorScaffold,
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        // indicatorShape: ShapeBorder(ActionIconTheme),
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        indicatorColor: backgroundColorScaffold,
+        selectedIndex: _selectedIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
             icon: Icon(Icons.home),
             label: 'Главная',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.shopping_basket),
             label: 'Покупки',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.assignment_returned),
             label: 'Платежи',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.sms),
             label: 'Чат',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.redeem),
             label: 'Бонусы',
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: backgroundColorScaffold,
-        unselectedItemColor: bottomNavigationBarUnselectedColor,
-        onTap: _onItemTapped,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
