@@ -1,4 +1,6 @@
+import 'package:app_kash_application/app/ui/pages/navigation-bar-screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/colors.dart';
 
@@ -14,10 +16,7 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Главная',
-      style: optionStyle,
-    ),
+    HomeScreen(),
     Text(
       'Покупки',
       style: optionStyle,
